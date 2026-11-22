@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  html,
+  body {
+    min-height: 100%;
+    background-color: #020510;
+    color: #f8fafc;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes subtle-orbit {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.05);
+    opacity: 0.78;
+  }
+}
+
+@keyframes orb-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(36px, -24px, 0) scale(1.08);
+  }
+}
+
+@keyframes orb-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-32px, 26px, 0) scale(1.1);
+  }
+}
+
+@keyframes beam-sweep {
+  0% {
+    transform: translate3d(-28%, -10%, 0) rotate(-18deg);
+    opacity: 0.14;
+  }
+  50% {
+    transform: translate3d(18%, 6%, 0) rotate(-14deg);
+    opacity: 0.32;
+  }
+  100% {
+    transform: translate3d(-28%, -10%, 0) rotate(-18deg);
+    opacity: 0.14;
+  }
+}
+
+@keyframes beam-sweep-reverse {
+  0% {
+    transform: translate3d(24%, 12%, 0) rotate(16deg);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translate3d(-18%, -6%, 0) rotate(20deg);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translate3d(24%, 12%, 0) rotate(16deg);
+    opacity: 0.12;
+  }
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate3d(10px, -22px, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes gradient-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -2%, 0) scale(1.06);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+@keyframes holo-sweep {
+  0% {
+    transform: translateX(-140%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.arena-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(34, 211, 238, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.arena-radial-glow {
+  background:
+    radial-gradient(ellipse 72% 48% at 50% -12%, rgba(37, 99, 235, 0.28), transparent 72%),
+    radial-gradient(ellipse 46% 42% at 88% 16%, rgba(124, 58, 237, 0.2), transparent 72%),
+    radial-gradient(ellipse 44% 38% at 14% 86%, rgba(34, 211, 238, 0.16), transparent 72%);
+}
+
+.glass-panel {
+  background: linear-gradient(155deg, rgba(13, 22, 48, 0.88) 0%, rgba(6, 11, 27, 0.94) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.glass-panel-elevated {
+  background: linear-gradient(160deg, rgba(17, 29, 64, 0.92) 0%, rgba(7, 13, 32, 0.96) 100%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.card-reflection::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 45%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-20deg);
+  pointer-events: none;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .card-reflection::after,
+.card-reflection-trigger:hover .card-reflection::after {
+  transform: translateX(280%) skewX(-20deg);
+}
+
+.animate-subtle-orbit {
+  animation: subtle-orbit 7.5s ease-in-out infinite;
+}
+
+.animate-orb-a {
+  animation: orb-drift-a 16s ease-in-out infinite;
+}
+
+.animate-orb-b {
+  animation: orb-drift-b 20s ease-in-out infinite;
+}
+
+.animate-beam-sweep {
+  animation: beam-sweep 14s ease-in-out infinite;
+}
+
+.animate-beam-sweep-reverse {
+  animation: beam-sweep-reverse 18s ease-in-out infinite;
+}
+
+.animate-gradient-drift {
+  animation: gradient-drift 12s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 16s linear infinite;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-subtle-orbit,
+  .animate-orb-a,
+  .animate-orb-b,
+  .animate-beam-sweep,
+  .animate-beam-sweep-reverse,
+  .animate-gradient-drift,
+  .animate-spin-slow,
+  .animate-float-gentle {
+    animation: none;
+  }
+  .card-reflection::after {
+    display: none;
+  }
+}

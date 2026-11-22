@@ -1,0 +1,6 @@
+{
+  "name": "HIMANSHU QUIZ",
+  "description": "A modern, futuristic quiz competition platform featuring five categories, ten point levels, and three modular game modes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
